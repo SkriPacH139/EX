@@ -1,0 +1,14 @@
+D:\Learn\CompClub_Console\bin\Debug\CompClub_Console.exe.config
+D:\Learn\CompClub_Console\bin\Debug\CompClub_Console.exe
+D:\Learn\CompClub_Console\bin\Debug\CompClub_Console.pdb
+D:\Learn\CompClub_Console\obj\Debug\CompClub_Console.csproj.AssemblyReference.cache
+D:\Learn\CompClub_Console\obj\Debug\CompClub_Console.csproj.CoreCompileInputs.cache
+D:\Learn\CompClub_Console\obj\Debug\CompClub_Console.exe
+D:\Learn\CompClub_Console\obj\Debug\CompClub_Console.pdb
+D:\Learn\EX\CompClub_Console\bin\Debug\CompClub_Console.exe.config
+D:\Learn\EX\CompClub_Console\bin\Debug\CompClub_Console.exe
+D:\Learn\EX\CompClub_Console\bin\Debug\CompClub_Console.pdb
+D:\Learn\EX\CompClub_Console\obj\Debug\CompClub_Console.csproj.AssemblyReference.cache
+D:\Learn\EX\CompClub_Console\obj\Debug\CompClub_Console.csproj.CoreCompileInputs.cache
+D:\Learn\EX\CompClub_Console\obj\Debug\CompClub_Console.exe
+D:\Learn\EX\CompClub_Console\obj\Debug\CompClub_Console.pdb

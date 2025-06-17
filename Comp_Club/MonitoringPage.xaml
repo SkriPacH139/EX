@@ -1,0 +1,530 @@
+﻿<Page x:Class="Comp_Club.MonitoringPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Comp_Club"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1250"
+      Title="Аренда и залы.">
+
+    <Grid Style="{StaticResource DarkGridStyle}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Grid.Column="2" Grid.Row="1"  Text="H" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="3" Grid.Row="1" Text="A" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="4" Grid.Row="1" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="5" Grid.Row="1" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="5" Grid.Row="1" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="6" Grid.Row="1" Text="1" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+
+        <Button x:Name="PK01" Grid.Column="2" Grid.Row="2" Click="PK01_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="1" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>            
+        </Button>
+        
+        <Button x:Name="PK02" Grid.Column="3" Grid.Row="2" Click="PK02_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="2" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK03" Grid.Column="4" Grid.Row="2" Click="PK03_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="3" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK04" Grid.Column="5" Grid.Row="2" Click="PK04_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="4" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK05" Grid.Column="6" Grid.Row="2" Click="PK05_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="5" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK06" Grid.Column="2" Grid.Row="3" Click="PK06_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="6" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK07" Grid.Column="3" Grid.Row="3" Click="PK07_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="7" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK08" Grid.Column="4" Grid.Row="3" Click="PK08_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="8" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK09" Grid.Column="5" Grid.Row="3" Click="PK09_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="9" Margin="0,0,5,0"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK10" Grid.Column="6" Grid.Row="3" Click="PK10_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="10"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <TextBlock Grid.Column="8" Grid.Row="1"  Text="H" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="9" Grid.Row="1" Text="A" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="10" Grid.Row="1" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="11" Grid.Row="1" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="12" Grid.Row="1" Text="2" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+
+        <Button x:Name="PK11" Grid.Column="8" Grid.Row="2" Click="PK11_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="11"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK12" Grid.Column="9" Grid.Row="2" Click="PK12_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="12"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK13" Grid.Column="10" Grid.Row="2" Click="PK13_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="13"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK14" Grid.Column="11" Grid.Row="2" Click="PK14_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="14"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK15" Grid.Column="12" Grid.Row="2" Click="PK15_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="15"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK16" Grid.Column="8" Grid.Row="3" Click="PK16_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="16"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK17" Grid.Column="9" Grid.Row="3" Click="PK17_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="17"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK18" Grid.Column="10" Grid.Row="3" Click="PK18_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="18"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK19" Grid.Column="11" Grid.Row="3" Click="PK19_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="19"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK20" Grid.Column="12" Grid.Row="3" Click="PK20_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="20"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <TextBlock Grid.Column="2" Grid.Row="5"  Text="H" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="3" Grid.Row="5" Text="A" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="4" Grid.Row="5" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="5" Grid.Row="5" Text="L" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="6" Grid.Row="5" Text="3" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+
+        <Button x:Name="PK21" Grid.Column="2" Grid.Row="6" Click="PK21_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="21"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK22" Grid.Column="2" Grid.Row="7" Click="PK22_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="22"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK23" Grid.Column="2" Grid.Row="8"  Click="PK23_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="23"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK24" Grid.Column="2" Grid.Row="9" Click="PK24_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="24"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
+        <Button x:Name="PK25" Grid.Column="3" Grid.Row="6"  Click="PK25_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="25"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        
+        <Button x:Name="PK26" Grid.Column="3" Grid.Row="7" Click="PK26_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="26"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK27" Grid.Column="3" Grid.Row="8" Click="PK27_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="27"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK28" Grid.Column="3" Grid.Row="9" Click="PK28_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="28"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con1" Grid.Column="5" Grid.Row="6" Click="Con1_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="1"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con2" Grid.Column="5" Grid.Row="7"  Click="Con2_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="2"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con3" Grid.Column="5" Grid.Row="8" Click="Con3_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="3"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con4" Grid.Column="5" Grid.Row="9" Click="Con4_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="4"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con5" Grid.Column="6" Grid.Row="6" Click="Con5_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png  " Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="5"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con6" Grid.Column="6" Grid.Row="7" Click="Con6_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="6"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con7" Grid.Column="6" Grid.Row="8" Click="Con7_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="7"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con8" Grid.Column="6" Grid.Row="9" Click="Con8_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="8"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <TextBlock Grid.Column="9" Grid.Row="5"  Text="V" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="10" Grid.Row="5" Text="I" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+        <TextBlock Grid.Column="11" Grid.Row="5" Text="P" Style="{StaticResource LabelTextStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+
+        <Button x:Name="PK29" Grid.Column="8" Grid.Row="6" Click="PK29_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="29"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK30" Grid.Column="9" Grid.Row="6" Click="PK30_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="30"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK31" Grid.Column="10" Grid.Row="6" Click="PK31_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="31"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK32" Grid.Column="11" Grid.Row="6" Click="PK32_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="32"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK33" Grid.Column="12" Grid.Row="6" Click="PK33_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="33"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK34" Grid.Column="8" Grid.Row="7" Click="PK34_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="34"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK35" Grid.Column="9" Grid.Row="7" Click="PK35_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="35"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK36" Grid.Column="10" Grid.Row="7" Click="PK36_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="36"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK37" Grid.Column="11" Grid.Row="7" Click="PK37_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="37"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="PK38" Grid.Column="12" Grid.Row="7" Click="PK38_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/PK.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="38"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con9" Grid.Column="8" Grid.Row="9" Click="Con9_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="9"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con10" Grid.Column="9" Grid.Row="9" Click="Con10_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="10"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con11" Grid.Column="10" Grid.Row="9" Click="Con11_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="11"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con12" Grid.Column="11" Grid.Row="9" Click="Con12_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="12"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <Button x:Name="Con13" Grid.Column="12" Grid.Row="9" Click="Con13_Click" Style="{StaticResource NeonButtonStyle}" Margin="5" Padding="0">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/CONS.png" Style="{StaticResource ImageStyle}"/>
+                    <TextBlock Text="13"/>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Page>

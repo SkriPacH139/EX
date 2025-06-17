@@ -1,0 +1,4 @@
+﻿  pch.cpp
+  dllmain.cpp
+     Создается библиотека D:\Learn\EX\ConsoleBufferDLL\x64\Debug\ConsoleBufferDLL.lib и объект D:\Learn\EX\ConsoleBufferDLL\x64\Debug\ConsoleBufferDLL.exp
+  ConsoleBufferDLL.vcxproj -> D:\Learn\EX\ConsoleBufferDLL\x64\Debug\ConsoleBufferDLL.dll

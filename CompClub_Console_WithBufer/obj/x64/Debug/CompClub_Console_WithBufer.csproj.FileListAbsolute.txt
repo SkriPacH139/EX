@@ -1,0 +1,7 @@
+D:\Learn\EX\CompClub_Console_WithBufer\bin\x64\Debug\CompClub_Console.exe.config
+D:\Learn\EX\CompClub_Console_WithBufer\bin\x64\Debug\CompClub_Console.exe
+D:\Learn\EX\CompClub_Console_WithBufer\bin\x64\Debug\CompClub_Console.pdb
+D:\Learn\EX\CompClub_Console_WithBufer\obj\x64\Debug\CompClub_Console_WithBufer.csproj.AssemblyReference.cache
+D:\Learn\EX\CompClub_Console_WithBufer\obj\x64\Debug\CompClub_Console_WithBufer.csproj.CoreCompileInputs.cache
+D:\Learn\EX\CompClub_Console_WithBufer\obj\x64\Debug\CompClub_Console.exe
+D:\Learn\EX\CompClub_Console_WithBufer\obj\x64\Debug\CompClub_Console.pdb

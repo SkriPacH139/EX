@@ -1,0 +1,186 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|d:\\learn\\ex\\compclub_console_withbufer\\consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ConsoleBuffer.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\ConsoleBuffer.cs",
+              "RelativeDocumentMoniker": "ConsoleBuffer.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\ConsoleBuffer.cs",
+              "RelativeToolTip": "ConsoleBuffer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T18:01:49.747Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Client.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Client.cs",
+              "RelativeDocumentMoniker": "Client.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Client.cs",
+              "RelativeToolTip": "Client.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:47.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Component.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Component.cs",
+              "RelativeDocumentMoniker": "Component.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Component.cs",
+              "RelativeToolTip": "Component.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:46.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DataStore.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\DataStore.cs",
+              "RelativeDocumentMoniker": "DataStore.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\DataStore.cs",
+              "RelativeToolTip": "DataStore.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAABAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:46.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Dish.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Dish.cs",
+              "RelativeDocumentMoniker": "Dish.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Dish.cs",
+              "RelativeToolTip": "Dish.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:46.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Guest.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Guest.cs",
+              "RelativeDocumentMoniker": "Guest.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Guest.cs",
+              "RelativeToolTip": "Guest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:45.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Order.cs",
+              "RelativeDocumentMoniker": "Order.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Order.cs",
+              "RelativeToolTip": "Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:45.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "OrderStatus.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\OrderStatus.cs",
+              "RelativeDocumentMoniker": "OrderStatus.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\OrderStatus.cs",
+              "RelativeToolTip": "OrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:44.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Person.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Person.cs",
+              "RelativeDocumentMoniker": "Person.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Person.cs",
+              "RelativeToolTip": "Person.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:44.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T17:58:19.816Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

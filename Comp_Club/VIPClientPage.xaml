@@ -1,0 +1,39 @@
+﻿<Page x:Class="Comp_Club.VIPClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Comp_Club"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="VIPClientPage">
+
+    <Grid Style="{StaticResource DarkGridStyle}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Клиенты" Foreground="Wheat" FontSize="20" FontWeight="Bold" Margin="10,25,0,10" Grid.ColumnSpan="3"/>
+        <DataGrid Name="VIPClientDataGrid" FontSize="18" AutoGenerateColumns="False" Margin="10,70,10,23" Grid.ColumnSpan="3" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="*"/>
+                <DataGridTextColumn Header="Почта" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Скидка %" Binding="{Binding Discount}" Width="*"/>
+                <DataGridTextColumn Header="Уровень VIP" Binding="{Binding VIP_Level}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="addBut" Grid.Row="1" Content="Добавить клиента" Style="{StaticResource NeonButtonStyle}" Click="addBut_Click"/>
+        <Button x:Name="remBut" Grid.Row="1" Grid.Column="2" Content="Удалить клиента" Style="{StaticResource NeonButtonStyle}" Click="remBut_Click"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="Comp_Club.BuffetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Comp_Club"
+        mc:Ignorable="d"
+        Title="Закуски" Height="250" Width="400">
+    <Grid Style="{StaticResource DarkGridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>           
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0"  Content="Принглс" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0" />
+        <Button Grid.Column="1" Grid.Row="0" Content="Лейс" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="3" Grid.Row="0" Content="Burn"   Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="4" Grid.Row="0" Content="Adrenalin"  Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+
+        <Button Grid.Column="0" Grid.Row="2" Content="Вода" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="0" Grid.Row="3" Content="Кофе" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="0" Grid.Row="4" Content="Чай" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Спрайт" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="Кола" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="Фанта" Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+
+        <Button Grid.Column="3" Grid.Row="2" Content="Арахис"  Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+        <Button Grid.Column="3" Grid.Row="3" Content="Фундук"  Style="{StaticResource NeonButtonStyle}" Padding="0" Margin="0"/>
+    </Grid>
+</Window>
