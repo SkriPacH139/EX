@@ -33,13 +33,10 @@ namespace Comp_Club
         private string tableName;
         #endregion
 
-
-        #region Конструктор
-
+        // Конструктор: задаёт контекст зала и таблицы, загружает текущее состояние аренды
         public infoTabWindow(string table, string hall, int ID)
         {
             InitializeComponent();
-
             hallName = hall;
             tableName = table;
             logFileName = DateTime.Today.ToString("yyyy-MM-dd") + ".log";
@@ -53,27 +50,19 @@ namespace Comp_Club
             LoadActiveRental();
             LoadClients();
         }
-        #endregion
-
 
         #region Клиенты
 
+        // Заполняет выпадающий список клиентов из базы и добавляет пункт незарегистрированного
         private void LoadClients()
         {
-            
-
             var clients = new List<Client>
             {
-                new Client
-                {
-                    ClientID = -1,
-                    Name = "Незарегистрированный пользователь"
-                }
+                new Client { ClientID = -1, Name = "Незарегистрированный пользователь" }
             };
 
-            // Загружаем EF-объекты в память, затем проецируем в нужный класс
             var dbClients = Entities.Instance.Clients
-                .AsEnumerable() // переводит запрос в память
+                .AsEnumerable()
                 .Select(c => new Client
                 {
                     ClientID = c.ClientID,
@@ -85,19 +74,18 @@ namespace Comp_Club
                 });
 
             clients.AddRange(dbClients);
-
             ClientComboBox.ItemsSource = clients;
         }
 
+        // Переключает видимость поля имени для незарегистрированного клиента
         private void ClientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ClientComboBox.SelectedItem is Client selectedClient)
             {
-                if (selectedClient.ClientID == -1)  // незарегистрированный
+                if (selectedClient.ClientID == -1)
                 {
                     UnregisteredNamePanel.Visibility = Visibility.Visible;
                     ClientIdTextBlock.Text = noRegClientId.ToString();
-
                 }
                 else
                 {
@@ -108,10 +96,11 @@ namespace Comp_Club
             }
         }
 
-        #endregion    
+        #endregion
 
-        #region Работа с логами и арендой
+        #region Логика аренды и логирования
 
+        // Закрывает просроченные аренды из логов предыдущих дней
         private void CloseExpiredRentalsForPreviousDays()
         {
             string baseDir = Path.Combine("Logs", tableName);
@@ -124,16 +113,17 @@ namespace Comp_Club
                 CloseExpiredRentalsInFile(file);
         }
 
+        // Закрывает просроченные аренды из сегодняшнего лога
         private void CloseExpiredRentals()
         {
             string logPath = Path.Combine("Logs", tableName, logFileName);
             CloseExpiredRentalsInFile(logPath);
         }
 
+        // Переводит статус активных аренды в "Закрыта" при просрочке
         private void CloseExpiredRentalsInFile(string logPath)
         {
             if (!File.Exists(logPath)) return;
-
             var lines = File.ReadAllLines(logPath).ToList();
             DateTime logDate = DateTime.Today;
 
@@ -145,198 +135,131 @@ namespace Comp_Club
             }
 
             bool updated = false;
-
             for (int i = 0; i < lines.Count; i++)
             {
                 if (lines[i].StartsWith("=== АРЕНДА"))
                 {
-                    int statusIndex = -1, endTimeIndex = -1;
-
+                    int statusIdx = -1, endIdx = -1;
                     for (int j = i + 1; j < lines.Count && !lines[j].StartsWith("==="); j++)
                     {
-                        if (lines[j].StartsWith("Статус:")) statusIndex = j;
-                        if (lines[j].StartsWith("Окончание:")) endTimeIndex = j;
+                        if (lines[j].StartsWith("Статус:")) statusIdx = j;
+                        if (lines[j].StartsWith("Окончание:")) endIdx = j;
                     }
-
-                    if (statusIndex != -1 && endTimeIndex != -1)
+                    if (statusIdx != -1 && endIdx != -1)
                     {
-                        string status = lines[statusIndex].Substring("Статус:".Length).Trim();
-                        string endTimeStr = lines[endTimeIndex].Substring("Окончание:".Length).Trim();
-
-                        if (DateTime.TryParseExact(endTimeStr, "HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime endTime))
+                        var endTimeStr = lines[endIdx].Substring("Окончание:".Length).Trim();
+                        if (DateTime.TryParseExact(endTimeStr, "HH:mm", null,
+                            System.Globalization.DateTimeStyles.None, out DateTime endTime))
                         {
-                            var fullEndTime = new DateTime(logDate.Year, logDate.Month, logDate.Day, endTime.Hour, endTime.Minute, 0);
-
-                            if (status == "Активна" && DateTime.Now > fullEndTime)
+                            var fullEnd = new DateTime(logDate.Year, logDate.Month,
+                                logDate.Day, endTime.Hour, endTime.Minute, 0);
+                            if (lines[statusIdx].Contains("Активна") && DateTime.Now > fullEnd)
                             {
-                                lines[statusIndex] = "Статус: Закрыта";
+                                lines[statusIdx] = "Статус: Закрыта";
                                 updated = true;
                             }
                         }
                     }
                 }
             }
-
             if (updated)
                 File.WriteAllLines(logPath, lines);
         }
 
+        // Загружает счётчик для незарегистрированных клиентов из лога
         private void LoadnoRegClientId()
         {
             string logPath = Path.Combine("Logs", tableName, logFileName);
-
-            if (!File.Exists(logPath))
-            {
-                noRegClientId = -1;
-                return;
-            }
+            if (!File.Exists(logPath)) { noRegClientId = -1; return; }
 
             var lines = File.ReadAllLines(logPath);
-            string counterLine = lines.FirstOrDefault(l => l.StartsWith("#client_counter:"));
-
+            var counterLine = lines.FirstOrDefault(l => l.StartsWith("#client_counter:"));
             if (counterLine != null)
             {
                 var parts = counterLine.Substring("#client_counter:".Length).Split(':');
-                if (parts.Length == 2 &&
-                    DateTime.TryParse(parts[0], out DateTime date) &&
-                    int.TryParse(parts[1], out int counter) &&
-                    date == DateTime.Today)
+                if (parts.Length == 2 && DateTime.TryParse(parts[0], out DateTime date)
+                    && int.TryParse(parts[1], out int cnt) && date == DateTime.Today)
                 {
-                    noRegClientId = counter;
+                    noRegClientId = cnt;
                     return;
                 }
             }
-
             noRegClientId = -1;
             UpdatenoRegClientIdInLog(lines.ToList(), logPath);
         }
 
+        // Обновляет счётчик незарегистрированных клиентов в логе
         private void UpdatenoRegClientIdInLog(List<string> lines, string logPath)
         {
-            string newCounter = " ";
-
-            if (noRegClient != " ")            
-                 newCounter = $"#client_counter:{DateTime.Today:yyyy-MM-dd}:{++clientCounter}";
-            else
-                newCounter = $"#client_counter:{DateTime.Today:yyyy-MM-dd}:{++clientCounter}";
-
-
-
+            string newCounter = $"#client_counter:{DateTime.Today:yyyy-MM-dd}:{++clientCounter}";
             int idx = lines.FindIndex(l => l.StartsWith("#client_counter:"));
-
-            if (idx != -1)
-                lines[idx] = newCounter;
-            else
-                lines.Insert(0, newCounter);
+            if (idx != -1) lines[idx] = newCounter;
+            else lines.Insert(0, newCounter);
 
             Directory.CreateDirectory(Path.GetDirectoryName(logPath));
             File.WriteAllLines(logPath, lines);
         }
 
+        // Загружает и отображает последнюю активную аренду
         private void LoadActiveRental()
         {
             string logPath = Path.Combine("Logs", tableName, logFileName);
-            if (!File.Exists(logPath))
-            {
-                ClearRentalUI();
-                return;
-            }
+            if (!File.Exists(logPath)) { ClearRentalUI(); return; }
 
             var lines = File.ReadAllLines(logPath);
-            List<string> currentEntry = null;
-            List<string> lastClosedEntry = null;
-            List<string> lastActiveEntryAfterClosed = null;
-            bool afterLastClosed = false;
+            List<string> current = null, lastClosed = null, nextActive = null;
+            bool afterClosed = false;
 
             for (int i = 0; i < lines.Length; i++)
             {
-                string line = lines[i];
-                if (line.StartsWith("=== АРЕНДА"))
-                    currentEntry = new List<string> { line };
-                else if (currentEntry != null)
+                var line = lines[i];
+                if (line.StartsWith("=== АРЕНДА")) current = new List<string> { line };
+                else if (current != null)
                 {
                     if (line.StartsWith("==="))
                     {
-                        if (currentEntry.Any(l => l.StartsWith("Статус: Закрыта")))
-                        {
-                            lastClosedEntry = new List<string>(currentEntry);
-                            afterLastClosed = true;
-                            lastActiveEntryAfterClosed = null;
-                        }
-                        else if (currentEntry.Any(l => l.StartsWith("Статус: Активна")) && afterLastClosed)
-                        {
-                            lastActiveEntryAfterClosed = new List<string>(currentEntry);
-                        }
-                        currentEntry = new List<string> { line };
+                        if (current.Any(l => l.Contains("Закрыта"))) { lastClosed = new List<string>(current); afterClosed = true; nextActive = null; }
+                        else if (afterClosed && current.Any(l => l.Contains("Активна"))) nextActive = new List<string>(current);
+                        current = new List<string> { line };
                     }
-                    else
-                    {
-                        currentEntry.Add(line);
-                    }
+                    else current.Add(line);
                 }
             }
-
-            if (currentEntry != null && currentEntry.Count > 0)
+            if (current != null && current.Count > 0)
             {
-                afterLastClosed = true;
-                if (currentEntry.Any(l => l.StartsWith("Статус: Закрыта")))
-                {
-                    lastClosedEntry = new List<string>(currentEntry);
-                    lastActiveEntryAfterClosed = null;
-                }
-                else if (currentEntry.Any(l => l.StartsWith("Статус: Активна")) && afterLastClosed)
-                {
-                    lastActiveEntryAfterClosed = new List<string>(currentEntry);
-                }
+                if (current.Any(l => l.Contains("Закрыта"))) { lastClosed = new List<string>(current); nextActive = null; }
+                else if (afterClosed && current.Any(l => l.Contains("Активна"))) nextActive = new List<string>(current);
             }
-
-            if (lastActiveEntryAfterClosed != null)
-            {
-                if (!ProcessEntry(lastActiveEntryAfterClosed))
-                    ClearRentalUI();
-            }
-            else
-            {
-                ClearRentalUI();
-            }
+            if (nextActive != null) ProcessEntry(nextActive); else ClearRentalUI();
         }
 
+        // Разбирает запись лога и заполняет UI
         private bool ProcessEntry(List<string> entry)
         {
             try
             {
-                int clientIdStr = int.Parse(entry.FirstOrDefault(l => l.StartsWith("Клиент ID:"))?.Split(new[] { ':' }, 2)[1].Trim());
-                noRegClient = entry.FirstOrDefault(l => l.StartsWith("Имя:"))?.Split(new[] { ':' }, 2)[1].Trim();
-                string room = entry.FirstOrDefault(l => l.StartsWith("Зал:"))?.Split(new[] { ':' }, 2)[1].Trim();
-                priceRent = double.Parse(entry.FirstOrDefault(l => l.StartsWith("Стоимость:"))?.Split(new[] { ':' }, 2)[1].Trim());
-                string start = entry.FirstOrDefault(l => l.StartsWith("Начало:"))?.Split(new[] { ':' }, 2)[1].Trim();
-                string end = entry.FirstOrDefault(l => l.StartsWith("Окончание:"))?.Split(new[] { ':' }, 2)[1].Trim();
-                
+                int clientId = int.Parse(entry.FirstOrDefault(l => l.StartsWith("Клиент ID:"))
+                    .Split(':')[1].Trim());
+                noRegClient = entry.FirstOrDefault(l => l.StartsWith("Имя:"))
+                    .Split(':')[1].Trim();
 
-                if (string.IsNullOrEmpty(room) || string.IsNullOrEmpty(start) || string.IsNullOrEmpty(end))
-                    return false;
+                priceRent = double.Parse(entry.FirstOrDefault(l => l.StartsWith("Стоимость:"))
+                    .Split(':')[1].Trim());
+                var times = entry.Where(l => l.StartsWith("Начало:") || l.StartsWith("Окончание:")).ToList();
+                var today = DateTime.Today;
+                rentalStart = DateTime.Parse($"{today:yyyy-MM-dd} {times[0].Split(':')[1].Trim()}");
+                rentalEnd = DateTime.Parse($"{today:yyyy-MM-dd} {times[1].Split(':')[1].Trim()}");
 
-                RoomNameTextBlock.Text = room;
-                ClientIdTextBlock.Text = clientIdStr.ToString();
-                priceTextBlock.Text = priceRent.ToString();
-
-                if (clientIdStr < 0)
+                ClientIdTextBlock.Text = clientId.ToString();
+                if (clientId < 0)
                 {
                     ClientComboBox.SelectedValue = -1;
                     UnregisteredNamePanel.Visibility = Visibility.Visible;
                     UnregisteredClientNameTextBox.Text = noRegClient;
                 }
-                else
-                    ClientComboBox.SelectedValue = clientIdStr;
-
-
-                DateTime today = DateTime.Today;
-                rentalStart = DateTime.Parse($"{today:yyyy-MM-dd} {start}");
-                rentalEnd = DateTime.Parse($"{today:yyyy-MM-dd} {end}");
-
+                else ClientComboBox.SelectedValue = clientId;
 
                 ShowRentalInfo();
-
                 RentButton.IsEnabled = false;
                 ExtendButton.IsEnabled = true;
                 CloseRentButton.IsEnabled = true;
@@ -345,28 +268,23 @@ namespace Comp_Club
 
                 return true;
             }
-            catch
-            {
-                return false;
-            }
+            catch { return false; }
         }
 
+        // Запись аренды: открытие или закрытие
         private void LogRental(bool isClosing = false)
         {
             if (!rentalStart.HasValue || !rentalEnd.HasValue) return;
 
-            string dir = Path.Combine("Logs", tableName);
+            var dir = Path.Combine("Logs", tableName);
             Directory.CreateDirectory(dir);
-
-            string logPath = Path.Combine(dir, logFileName);
+            var logPath = Path.Combine(dir, logFileName);
 
             string clientId = ClientIdTextBlock.Text;
-            string room = hallName;
-
             string entry = $"=== АРЕНДА ===\n" +
                            $"Клиент ID: {clientId}\n" +
                            $"Имя: {noRegClient}\n" +
-                           $"Зал: {room}\n" +
+                           $"Зал: {hallName}\n" +
                            $"Стоимость: {priceRent}\n" +
                            $"Начало: {rentalStart.Value:HH:mm}\n" +
                            $"Окончание: {rentalEnd.Value:HH:mm}\n" +
@@ -374,73 +292,45 @@ namespace Comp_Club
                            new string('-', 30) + "\n";
 
             var lines = File.Exists(logPath) ? File.ReadAllLines(logPath).ToList() : new List<string>();
-
-            int startIndex = -1;
-            for (int i = 0; i < lines.Count; i++)
+            int startIdx = lines.FindIndex(l => l.StartsWith("=== АРЕНДА ===") &&
+                lines.SkipWhile(x => x != l).Skip(1).TakeWhile(x => !x.StartsWith("===")).Any(x => x.Contains($"Клиент ID: {clientId}")));
+            if (startIdx != -1)
             {
-                if (lines[i].StartsWith("=== АРЕНДА ==="))
-                {
-                    bool matchClient = false, matchHall = false;
-
-                    for (int j = i + 1; j < lines.Count && !lines[j].StartsWith("==="); j++)
-                    {
-                        if (lines[j].StartsWith("Клиент ID: " + clientId)) matchClient = true;
-                        if (lines[j].StartsWith("Зал: " + room)) matchHall = true;
-                    }
-
-                    if (matchClient && matchHall)
-                    {
-                        startIndex = i;
-                        break;
-                    }
-                }
+                int endIdx = startIdx + 1;
+                while (endIdx < lines.Count && !lines[endIdx].StartsWith("===")) endIdx++;
+                lines.RemoveRange(startIdx, endIdx - startIdx);
+                lines.InsertRange(startIdx, entry.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s)));
             }
-
-            if (startIndex != -1)
-            {
-                int endIndex = startIndex + 1;
-                while (endIndex < lines.Count && !lines[endIndex].StartsWith("==="))
-                    endIndex++;
-
-                lines.RemoveRange(startIndex, endIndex - startIndex);
-                lines.InsertRange(startIndex, entry.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s)));
-            }
-            else
-            {
-                lines.AddRange(entry.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s)));
-            }
+            else lines.AddRange(entry.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s)));
 
             UpdatenoRegClientIdInLog(lines, logPath);
             File.WriteAllLines(logPath, lines);
         }
 
-        private void priceCalculate(double hours) => priceRent = priceRent == 0 ? priceReturn(tableID, hours) : priceRent += priceReturn(tableID, hours);      
-        
+        // Рассчитывает цену аренды, учитывая предыдущие расчёты
+        private void priceCalculate(double hours) => priceRent = priceRent == 0
+            ? priceReturn(tableID, hours)
+            : priceRent + priceReturn(tableID, hours);
+
+        // Возвращает стоимость за дополнительные часы в зависимости от типа столика
         private double priceReturn(int id, double hours)
         {
-            if (id < 28)
-                return priceRent = bet * hours * betPK;
-
-            else if (id > 28 && id <= 36)
-                return priceRent = bet * hours * betCon;
-
-            else if (id > 36 && id <= 47)
-                return priceRent = bet * hours * betPK * betVip;
-
-            else
-                return priceRent = bet * hours * betCon * betVip;
+            if (id < 28) return bet * hours * betPK;
+            if (id <= 36) return bet * hours * betCon;
+            if (id <= 47) return bet * hours * betPK * betVip;
+            return bet * hours * betCon * betVip;
         }
+
         #endregion
 
-
-        #region Работа с UI (аренда, кнопки)
+        #region Работа с UI (аренда)
 
         private void ShowRentalInfo()
         {
             StartTimeTextBlock.Text = rentalStart?.ToString("HH:mm") ?? "";
             EndTimeTextBlock.Text = rentalEnd?.ToString("HH:mm") ?? "";
-            RentalDurationTextBlock.Text = (rentalStart.HasValue && rentalEnd.HasValue) ?
-                (rentalEnd.Value - rentalStart.Value).TotalHours.ToString("F1") : "";
+            RentalDurationTextBlock.Text = (rentalStart.HasValue && rentalEnd.HasValue)
+                ? (rentalEnd.Value - rentalStart.Value).TotalHours.ToString("F1") : "";
             priceTextBlock.Text = priceRent.ToString();
             RoomNameTextBlock.Text = hallName;
         }
@@ -463,76 +353,52 @@ namespace Comp_Club
 
             rentalStart = null;
             rentalEnd = null;
-        }        
+        }
 
+        // Обрабатывает начало новой аренды
         private void RentButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ClientComboBox.SelectedItem is not Client selectedClient)
-            {
-                MessageBox.Show("Выберите клиента.");
-                return;
-            }
-
-            string clientName;
-            if (selectedClient.ClientID == -1)
-            {
-                clientName = UnregisteredClientNameTextBox.Text.Trim();
-                if (string.IsNullOrWhiteSpace(clientName))
-                {
-                    MessageBox.Show("Введите имя незарегистрированного клиента.");
-                    return;
-                }
-            }
-            else
-            {
-                clientName = selectedClient.Name;
-            }
-
-            string clientId = selectedClient.ClientID == -1 ? noRegClientId.ToString() : selectedClient.ClientID.ToString();
-
-            double hours = RentalHoursComboBox.SelectedIndex == 0 ? 0.5 : RentalHoursComboBox.SelectedIndex;
+            if (ClientComboBox.SelectedItem is not Client sel) { MessageBox.Show("Выберите клиента."); return; }
+            string clientName = sel.ClientID == -1
+                ? UnregisteredClientNameTextBox.Text.Trim()
+                : sel.Name;
+            if (sel.ClientID == -1 && string.IsNullOrWhiteSpace(clientName))
+            { MessageBox.Show("Введите имя незарегистрированного клиента."); return; }
 
             rentalStart = DateTime.Now;
+            double hours = RentalHoursComboBox.SelectedIndex == 0 ? 0.5 : RentalHoursComboBox.SelectedIndex;
             rentalEnd = rentalStart.Value.AddHours(hours);
 
-            
-            ClientIdTextBlock.Text = clientId;           
-            
+            if (sel.ClientID == -1) noRegClientId--;
+            noRegClient = clientName;
+            priceCalculate(hours);
+
+            ShowRentalInfo();
+            LogRental();
 
             RentButton.IsEnabled = false;
             ExtendButton.IsEnabled = true;
             CloseRentButton.IsEnabled = true;
             ClientComboBox.IsEnabled = false;
             UnregisteredClientNameTextBox.IsEnabled = false;
-
-            if (selectedClient.ClientID == -1)
-                noRegClientId--;  // уменьшаем счетчик для следующих незарегистрированных
-
-            noRegClient = clientName;
-
-            priceCalculate(hours);
-            ShowRentalInfo();
-            LogRental();    
         }
 
         private void ExtendButton_Click(object sender, RoutedEventArgs e)
         {
-            double addHours = RentalHoursComboBox.SelectedIndex == 0 ? 0.5 : RentalHoursComboBox.SelectedIndex;
-            if (rentalEnd.HasValue)
-            {
-                rentalEnd = rentalEnd.Value.AddHours(addHours);
-                priceCalculate(addHours);
-                ShowRentalInfo();
-                LogRental();                
-            }
+            if (!rentalEnd.HasValue) return;
+            double addH = RentalHoursComboBox.SelectedIndex == 0 ? 0.5 : RentalHoursComboBox.SelectedIndex;
+            rentalEnd = rentalEnd.Value.AddHours(addH);
+            priceCalculate(addH);
+            ShowRentalInfo();
+            LogRental();
         }
 
         private void CloseRentButton_Click(object sender, RoutedEventArgs e)
         {
-            LogRental(true);           
+            LogRental(true);
             ClearRentalUI();
-            
         }
-        #endregion
+
     }
 }
+#endregion

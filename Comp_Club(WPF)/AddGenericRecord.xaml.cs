@@ -14,23 +14,22 @@ using System.Windows.Shapes;
 
 namespace Comp_Club
 {
-    /// <summary>
-    /// Логика взаимодействия для AddGenericRecord.xaml
-    /// </summary>
     public partial class AddGenericRecord : Window
-    {    
+    {
         public string Field1Value { get; private set; }
         public string Field2Value { get; private set; }
 
         private readonly string _mode;
 
+        // Инициализирует окно и задаёт режим работы
         public AddGenericRecord(string mode)
         {
-            InitializeComponent();
+            InitializeComponent(); // инициализация компонентов
             _mode = mode;
-            SetupForm();
+            SetupForm(); // настройка формы по режиму
         }
 
+        // Настраивает заголовок и метки в зависимости от режима
         private void SetupForm()
         {
             switch (_mode)
@@ -61,6 +60,7 @@ namespace Comp_Club
             }
         }
 
+        // Обработчик кнопки "Добавить": проверяет ввод и возвращает значения
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(Field1TextBox.Text) || string.IsNullOrWhiteSpace(Field2TextBox.Text))
@@ -71,15 +71,15 @@ namespace Comp_Club
 
             Field1Value = Field1TextBox.Text;
             Field2Value = Field2TextBox.Text;
-
-            DialogResult = true;
-            Close();
+            DialogResult = true; 
+            Close(); 
         }
 
+        // Обработчик кнопки "Отмена": закрывает окно без сохранения
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
-            Close();
+            Close(); 
         }
     }
 }

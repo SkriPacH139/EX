@@ -1,5 +1,4 @@
-﻿
-namespace CompClub_Console
+﻿namespace CompClub_Console
 {
     public class Component
     {

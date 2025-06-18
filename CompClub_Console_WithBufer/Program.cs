@@ -33,12 +33,12 @@ namespace CompClub_Console
                 ConsoleBuffer.Clear();
                 ConsoleBuffer.WriteAt(2, 1, "==== Компьютерный клуб ====", (ushort)ConsoleColor.Cyan);
                 ConsoleBuffer.WriteAt(2, 3, "1. Зал для гостей");
-                ConsoleBuffer.WriteAt(2, 4, "2. Склад");
-                ConsoleBuffer.WriteAt(2, 5, "3. Буфет");
-                ConsoleBuffer.WriteAt(2, 6, "4. Управление клиентами");
-                ConsoleBuffer.WriteAt(2, 6, "5. Отчеты");
-                ConsoleBuffer.WriteAt(2, 7, "0. Выход");
-                ConsoleBuffer.WriteAt(2, 8, "Выберите пункт меню: ");
+                //ConsoleBuffer.WriteAt(2, 4, "2. Склад");
+                //ConsoleBuffer.WriteAt(2, 5, "3. Буфет");
+                //ConsoleBuffer.WriteAt(2, 4, "2. Управление клиентами");
+                ConsoleBuffer.WriteAt(2, 4, "2. Отчеты");
+                ConsoleBuffer.WriteAt(2, 5, "0. Выход");
+                ConsoleBuffer.WriteAt(2, 7, "Выберите пункт меню: ");
                 ConsoleBuffer.PresentBuffer();
 
                 int key;
@@ -54,16 +54,16 @@ namespace CompClub_Console
                     case '1':
                         ManageHall();
                         break;
+                    case '_':
+                       //ManageInventory();
+                        break;
+                    case '-':
+                        //ManageKitchen();
+                        break;
+                    case '=':
+                        //ManageClients();
+                        break;
                     case '2':
-                        ManageInventory();
-                        break;
-                    case '3':
-                        ManageKitchen();
-                        break;
-                    case '4':
-                        ManageClients();
-                        break;
-                    case '5':
                         ShowReports();
                         break;
                     case '0':
@@ -103,9 +103,7 @@ namespace CompClub_Console
                     ConsoleBuffer.WriteAt(2, (short)line++, $"Имя: {guest.Name}, VIP: {guest.IsVIP}, Начало: {guest.StartTime}, Место: {guest.SeatNumber}, Тариф: {guest.Tariff}, Минут: {guest.RentalMinutes}");
                 }
 
-                line++;
-                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить гостя");
-                ConsoleBuffer.WriteAt(2, (short)line++, "2. Завершить сеанс гостя");
+                line++;                
                 ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
                 ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
 
@@ -116,11 +114,11 @@ namespace CompClub_Console
 
                 switch (key)
                 {
-                    case '1':
-                        AddGuest();
+                    case '-':
+                        //AddGuest();
                         break;
-                    case '2':
-                        FinishGuestSession();
+                    case '_':
+                        //FinishGuestSession();
                         break;
                     case '0':
                         back = true;
@@ -809,10 +807,10 @@ namespace CompClub_Console
                 ConsoleBuffer.WriteAt(2, 1, "==== Отчеты ====", (ushort)ConsoleColor.Cyan);
                 ConsoleBuffer.WriteAt(2, 3, "1. Ежедневная выручка");
                 ConsoleBuffer.WriteAt(2, 4, "2. Самые популярные товары на складе (топ-5)");
-                ConsoleBuffer.WriteAt(2, 5, "3. Часто заказываемые блюда");
-                ConsoleBuffer.WriteAt(2, 6, "4. Статистика посещений гостей");
-                ConsoleBuffer.WriteAt(2, 7, "0. Назад");
-                ConsoleBuffer.WriteAt(2, 9, "Выберите действие: ");
+                //ConsoleBuffer.WriteAt(2, 5, "3. Часто заказываемые блюда");
+                ConsoleBuffer.WriteAt(2, 5, "3. Статистика посещений гостей");
+                ConsoleBuffer.WriteAt(2, 6, "0. Назад");
+                ConsoleBuffer.WriteAt(2, 8, "Выберите действие: ");
                 ConsoleBuffer.PresentBuffer();
 
                 int key;
@@ -826,10 +824,10 @@ namespace CompClub_Console
                     case '2':
                         ReportPopularComponents();
                         break;
-                    case '3':
-                        ReportPopularDishes();
+                    case '-':
+                        //ReportPopularDishes();
                         break;
-                    case '4':
+                    case '3':
                         ReportGuestStatistics();
                         break;
                     case '0':
