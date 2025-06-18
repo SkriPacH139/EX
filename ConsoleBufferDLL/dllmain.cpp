@@ -1,151 +1,111 @@
 ﻿#include "pch.h"
 #include <windows.h>
+#include <wchar.h>
 
-extern "C"
-{
-    const SHORT WIDTH = 80;
-    const SHORT HEIGHT = 25;
+// Размеры буфера (можно изменить при необходимости)
+const SHORT WIDTH = 80;
+const SHORT HEIGHT = 25;
 
-    CHAR_INFO* buffer = nullptr;
-    HANDLE hConsole = nullptr;
+// Буфер и дескриптор
+CHAR_INFO buffer[WIDTH * HEIGHT];
+HANDLE hConsole = nullptr;
 
-    COORD bufferSize = { WIDTH, HEIGHT };
-    COORD bufferCoord = { 0, 0 };
-    SMALL_RECT writeRegion = { 0, 0, WIDTH - 1, HEIGHT - 1 };
+// Размеры и координаты для вывода
+COORD bufferSize = { WIDTH, HEIGHT };
+COORD bufferCoord = { 0, 0 };
+SMALL_RECT writeRegion = { 0, 0, WIDTH - 1, HEIGHT - 1 };
 
+extern "C" {
+
+    // Инициализация альтернативного буфера
     __declspec(dllexport) void Initialize()
     {
-        // Установка кодовой страницы UTF-8
         SetConsoleOutputCP(CP_UTF8);
         SetConsoleCP(CP_UTF8);
 
-        // Создание альтернативного буфера консоли
         hConsole = CreateConsoleScreenBuffer(
             GENERIC_READ | GENERIC_WRITE,
             0,
             nullptr,
             CONSOLE_TEXTMODE_BUFFER,
-            nullptr);
+            nullptr
+        );
 
-        if (hConsole == INVALID_HANDLE_VALUE)
-        {
-            hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        }
-        else
-        {
+        if (hConsole != INVALID_HANDLE_VALUE) {
             SetConsoleActiveScreenBuffer(hConsole);
+
+            // Установка шрифта
+            CONSOLE_FONT_INFOEX cfi = { sizeof(CONSOLE_FONT_INFOEX) };
+            if (GetCurrentConsoleFontEx(hConsole, FALSE, &cfi)) {
+                wcscpy_s(cfi.FaceName, L"Consolas");
+                cfi.dwFontSize.Y = 16;
+                SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
+            }
+
+            SetConsoleScreenBufferSize(hConsole, bufferSize);
+            SetConsoleWindowInfo(hConsole, TRUE, &writeRegion);
+
+            // ✅ Ключевой блок для включения обработки ввода
+            HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+            DWORD mode = 0;
+            GetConsoleMode(hStdin, &mode);
+            SetConsoleMode(hStdin, mode | ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_PROCESSED_INPUT);
         }
+    }
 
-        // Установка шрифта Consolas с размером 16
-        CONSOLE_FONT_INFOEX cfi = { sizeof(CONSOLE_FONT_INFOEX) };
-        if (GetCurrentConsoleFontEx(hConsole, FALSE, &cfi))
-        {
-            wcscpy_s(cfi.FaceName, L"Consolas");
-            cfi.dwFontSize.Y = 16;
-            SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
+    // Очистка буфера
+    __declspec(dllexport) void ClearScreen()
+    {
+        for (int i = 0; i < WIDTH * HEIGHT; i++) {
+            buffer[i].Char.UnicodeChar = L' ';
+            buffer[i].Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
         }
+    }
 
-        // Установка размера буфера
-        SetConsoleScreenBufferSize(hConsole, bufferSize);
+    // Отображение буфера на экране
+    __declspec(dllexport) void Present()
+    {
+        if (hConsole != nullptr) {
+            WriteConsoleOutputW(hConsole, buffer, bufferSize, bufferCoord, &writeRegion);
+        }
+    }
 
-        // Установка размера окна консоли (соответствует буферу)
-        SetConsoleWindowInfo(hConsole, TRUE, &writeRegion);
+    // Вывод строки в позицию x, y
+    __declspec(dllexport) void WriteString(short x, short y, const wchar_t* text, unsigned short attributes)
+    {
+        if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT || text == nullptr)
+            return;
 
-        // Инициализация буфера CHAR_INFO
-        if (buffer == nullptr)
-        {
-            buffer = new CHAR_INFO[WIDTH * HEIGHT];
-            for (int i = 0; i < WIDTH * HEIGHT; i++)
-            {
-                buffer[i].Char.UnicodeChar = L' '; // пробел
-                buffer[i].Attributes = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE; // белый цвет
+        int offset = y * WIDTH + x;
+        size_t len = wcslen(text);
+
+        for (size_t i = 0; i < len && offset + i < WIDTH * HEIGHT; ++i) {
+            buffer[offset + i].Char.UnicodeChar = text[i];
+            buffer[offset + i].Attributes = attributes;
+        }
+    }
+
+    // Считывание кода нажатой клавиши
+    __declspec(dllexport) int ReadKey()
+    {
+        INPUT_RECORD inputRecord;
+        DWORD events;
+        HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+        while (true) {
+            ReadConsoleInput(hStdin, &inputRecord, 1, &events);
+            if (inputRecord.EventType == KEY_EVENT && inputRecord.Event.KeyEvent.bKeyDown) {
+                return inputRecord.Event.KeyEvent.wVirtualKeyCode;
             }
         }
     }
 
+    // Очистка ресурсов
     __declspec(dllexport) void Cleanup()
     {
-        if (buffer != nullptr)
-        {
-            delete[] buffer;
-            buffer = nullptr;
-        }
-
-        if (hConsole != nullptr && hConsole != GetStdHandle(STD_OUTPUT_HANDLE))
-        {
-            // Закрываем альтернативный буфер (если мы его создавали)
+        if (hConsole != nullptr) {
+            SetConsoleActiveScreenBuffer(GetStdHandle(STD_OUTPUT_HANDLE));
             CloseHandle(hConsole);
             hConsole = nullptr;
         }
-    }
-
-    __declspec(dllexport) void ClearScreen()
-    {
-        if (buffer == nullptr) return;
-
-        for (int i = 0; i < WIDTH * HEIGHT; i++)
-        {
-            buffer[i].Char.UnicodeChar = L' ';
-            buffer[i].Attributes = 7;
-        }
-    }
-
-    __declspec(dllexport) void WriteString(short x, short y, const wchar_t* text, unsigned short attributes)
-    {
-        if (buffer == nullptr) return;
-        if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT) return;
-
-        int len = lstrlenW(text);
-        for (int i = 0; i < len; i++)
-        {
-            short px = x + i;
-            if (px >= 0 && px < WIDTH)
-            {
-                buffer[y * WIDTH + px].Char.UnicodeChar = text[i];
-                buffer[y * WIDTH + px].Attributes = attributes;
-            }
-        }
-    }
-
-    __declspec(dllexport) void Present()
-    {
-        if (buffer == nullptr || hConsole == INVALID_HANDLE_VALUE) return;
-
-        WriteConsoleOutputW(
-            hConsole,
-            buffer,
-            bufferSize,
-            bufferCoord,
-            &writeRegion
-        );
-    }
-
-    __declspec(dllexport) int ReadKey()
-    {
-        HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
-        INPUT_RECORD inputRecord;
-        DWORD eventsRead = 0;
-
-        while (PeekConsoleInput(hInput, &inputRecord, 1, &eventsRead) && eventsRead > 0)
-        {
-            ReadConsoleInput(hInput, &inputRecord, 1, &eventsRead);
-
-            if (inputRecord.EventType == KEY_EVENT)
-            {
-                KEY_EVENT_RECORD ker = inputRecord.Event.KeyEvent;
-                if (ker.bKeyDown)
-                {
-                    return ker.uChar.UnicodeChar != 0 ? ker.uChar.UnicodeChar : ker.wVirtualKeyCode;
-                }
-            }
-        }
-        return 0;
-    }
-
-    __declspec(dllexport) void InitConsoleForRussian()
-    {
-        // Установка UTF-8 для консоли
-        SetConsoleOutputCP(CP_UTF8);
-        SetConsoleCP(CP_UTF8);
     }
 }

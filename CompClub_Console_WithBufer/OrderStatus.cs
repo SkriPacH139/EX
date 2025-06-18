@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CompClub_Console
+﻿namespace CompClub_Console
 {
+    /// Статус заказа.
     public enum OrderStatus
     {
-        InProcess,
-        Ready,
-        Delivered
+        InProcess,   // Заказ в процессе приготовления
+        Ready,       // Заказ готов
+        Delivered    // Заказ доставлен
     }
 }

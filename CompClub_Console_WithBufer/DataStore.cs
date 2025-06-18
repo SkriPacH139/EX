@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CompClub_Console
 {
+
+    /// Хранилище всех данных приложения (работает как in-memory база данных).   
     public static class DataStore
     {
         public static List<Guest> Guests { get; } = new List<Guest>();
@@ -16,9 +15,9 @@ namespace CompClub_Console
 
         public static int TotalSeats { get; } = 10;
 
+        /// Заполняет хранилище тестовыми данными.       
         public static void InitializeData()
         {
-            // Гости
             Guests.Add(new Guest
             {
                 Name = "Иван",
@@ -39,76 +38,29 @@ namespace CompClub_Console
                 RentalMinutes = 45
             });
 
-            // Клиенты
             Clients.Add(new Client
             {
                 Name = "Иван",
                 IsVIP = false,
                 PhoneNumber = "123456789",
                 AccumulatedBonus = 50,
-                RegistrationDate = DateTime.Now.AddMonths(-1),
-                HasMembershipCard = true,
-                Discount = 5
-            });
-
-            Clients.Add(new Client
-            {
-                Name = "Ольга",
-                IsVIP = true,
-                PhoneNumber = "987654321",
-                AccumulatedBonus = 150,
-                RegistrationDate = DateTime.Now.AddMonths(-3),
+                RegistrationDate = DateTime.Now.AddMonths(-2),
                 HasMembershipCard = true,
                 Discount = 10
             });
 
-            // Склад
-            Components.Add(new Component
-            {
-                Name = "Мышь Logitech",
-                Category = "Мыши",
-                Quantity = 10,
-                Price = 15
-            });
+            var comp1 = new Component { Name = "Булка", Quantity = 1, Unit = "шт" };
+            var comp2 = new Component { Name = "Котлета", Quantity = 1, Unit = "шт" };
+            Components.AddRange(new List<Component> { comp1, comp2 });
 
-            Components.Add(new Component
-            {
-                Name = "Клавиатура Corsair",
-                Category = "Клавиатуры",
-                Quantity = 5,
-                Price = 50
-            });
+            var dish = new Dish { Name = "Бургер", Price = 250 };
+            dish.Components.AddRange(new List<Component> { comp1, comp2 });
+            Dishes.Add(dish);
 
-            Components.Add(new Component
-            {
-                Name = "Видеокарта Nvidia",
-                Category = "Видеокарты",
-                Quantity = 2,
-                Price = 300
-            });
-
-            // Блюда
-            Dishes.Add(new Dish
-            {
-                Name = "Бургер",
-                Category = "Фастфуд",
-                Price = 5
-            });
-
-            Dishes.Add(new Dish
-            {
-                Name = "Салат",
-                Category = "Здоровая еда",
-                Price = 4
-            });
-
-            // Заказы
             Orders.Add(new Order
             {
-                ClientName = "Иван",
-                OrderNumber = 1,
-                SelectedDish = Dishes[0],
-                Status = OrderStatus.InProcess
+                Dishes = new List<Dish> { dish },
+                Status = OrderStatus.Ready
             });
         }
     }

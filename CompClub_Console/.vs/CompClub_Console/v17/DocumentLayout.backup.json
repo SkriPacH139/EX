@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\Learn\\EX\\CompClub_Console\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|d:\\learn\\ex\\compclub_console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|d:\\learn\\ex\\compclub_console\\compclubtests\\dishtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|solutionrelative:compclubtests\\dishtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|d:\\learn\\ex\\compclub_console\\compclubtests\\componenttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|solutionrelative:compclubtests\\componenttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|d:\\learn\\ex\\compclub_console\\compclubtests\\clienttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76A9AFBD-3795-4463-A140-9FB6B3724582}|CompClubTests\\CompClubTests.csproj|solutionrelative:compclubtests\\clienttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:Enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -21,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:Component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console\\Guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +62,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DishTests.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\DishTests.cs",
+              "RelativeDocumentMoniker": "CompClubTests\\DishTests.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\DishTests.cs",
+              "RelativeToolTip": "CompClubTests\\DishTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T12:56:32.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ComponentTests.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\ComponentTests.cs",
+              "RelativeDocumentMoniker": "CompClubTests\\ComponentTests.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\ComponentTests.cs",
+              "RelativeToolTip": "CompClubTests\\ComponentTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T12:56:31.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClientTests.cs",
+              "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\ClientTests.cs",
+              "RelativeDocumentMoniker": "CompClubTests\\ClientTests.cs",
+              "ToolTip": "D:\\Learn\\EX\\CompClub_Console\\CompClubTests\\ClientTests.cs",
+              "RelativeToolTip": "CompClubTests\\ClientTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T12:56:30.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Enums.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Enums.cs",
               "RelativeDocumentMoniker": "Enums.cs",
@@ -62,7 +113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Order.cs",
               "RelativeDocumentMoniker": "Order.cs",
@@ -74,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Dish.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Dish.cs",
               "RelativeDocumentMoniker": "Dish.cs",
@@ -86,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Component.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Component.cs",
               "RelativeDocumentMoniker": "Component.cs",
@@ -104,13 +155,13 @@
               "RelativeDocumentMoniker": "Client.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console\\Client.cs",
               "RelativeToolTip": "Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-01T06:01:35.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Guest.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Guest.cs",
               "RelativeDocumentMoniker": "Guest.cs",
@@ -122,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Person.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Person.cs",
               "RelativeDocumentMoniker": "Person.cs",
@@ -134,16 +185,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-01T05:59:54.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-01T05:59:54.075Z"
             }
           ]
         }

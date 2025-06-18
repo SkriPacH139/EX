@@ -3,24 +3,15 @@
   "WorkspaceRootPath": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|d:\\learn\\ex\\compclub_console_withbufer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|d:\\learn\\ex\\compclub_console_withbufer\\consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\barma\\Desktop\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,16 +22,28 @@
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:guest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:consolebuffer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:orderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:datastore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|D:\\Learn\\EX\\CompClub_Console_WithBufer\\component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{44E5A47D-CE3E-41C1-A1C4-3FA90DF74E45}|CompClub_Console.csproj|solutionrelative:component.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +53,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -59,85 +62,95 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\barma\\Desktop\\Program.cs",
+              "ToolTip": "C:\\Users\\barma\\Desktop\\Program.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAmwK4DAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-18T16:56:46.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ConsoleBuffer.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\ConsoleBuffer.cs",
               "RelativeDocumentMoniker": "ConsoleBuffer.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\ConsoleBuffer.cs",
               "RelativeToolTip": "ConsoleBuffer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAmwHkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T18:01:49.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T18:01:49.747Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Client.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Client.cs",
               "RelativeDocumentMoniker": "Client.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Client.cs",
               "RelativeToolTip": "Client.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:47.445Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "Component.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Component.cs",
               "RelativeDocumentMoniker": "Component.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Component.cs",
               "RelativeToolTip": "Component.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:46.917Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "DataStore.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\DataStore.cs",
               "RelativeDocumentMoniker": "DataStore.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\DataStore.cs",
               "RelativeToolTip": "DataStore.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAABAAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAmwEMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:46.498Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Dish.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Dish.cs",
               "RelativeDocumentMoniker": "Dish.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Dish.cs",
               "RelativeToolTip": "Dish.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:46.094Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "Guest.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Guest.cs",
               "RelativeDocumentMoniker": "Guest.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Guest.cs",
               "RelativeToolTip": "Guest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:45.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
               "Title": "Order.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Order.cs",
               "RelativeDocumentMoniker": "Order.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Order.cs",
               "RelativeToolTip": "Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:45.168Z"
             },
@@ -149,19 +162,19 @@
               "RelativeDocumentMoniker": "OrderStatus.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\OrderStatus.cs",
               "RelativeToolTip": "OrderStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:44.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Person.cs",
               "DocumentMoniker": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Person.cs",
               "RelativeDocumentMoniker": "Person.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Person.cs",
               "RelativeToolTip": "Person.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:44.044Z"
             },
@@ -173,7 +186,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "D:\\Learn\\EX\\CompClub_Console_WithBufer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAEgAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAIcDAAAAAAAAAAAmwKsDAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-17T17:58:19.816Z",
               "EditorCaption": ""

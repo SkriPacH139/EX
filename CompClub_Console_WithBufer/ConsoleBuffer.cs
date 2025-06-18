@@ -1,89 +1,122 @@
-﻿#region Console Buffer Wrapper
-
+﻿using System;
 using System.Runtime.InteropServices;
 
-using System;
-
-/// <summary>
-/// Обертка для работы с консольным буфером через внешнюю C++ DLL
-/// </summary>
-public static class ConsoleBuffer
+namespace CompClub_Console
 {
-    private const string dllName = "ConsoleBufferDLL.dll";
-
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void Initialize();
-
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void Cleanup();
-
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void ClearScreen();
-
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    private static extern void Present();
-
-    // Заменили UnmanagedType.LPStr на LPWStr для поддержки Unicode (русского)
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
-    private static extern void WriteString(short x, short y, [MarshalAs(UnmanagedType.LPWStr)] string text, ushort attributes);
-
-    [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
-    private static extern int ReadKey();
-
     /// <summary>
-    /// Инициализация буфера (вызывать в начале программы)
+    /// Обёртка над ConsoleBufferDLL.dll — управление альтернативным буфером консоли.
     /// </summary>
-    public static void Init()
+    public static class ConsoleBuffer
     {
-        Initialize();
-    }
+        private const string dllName = "ConsoleBufferDLL.dll";
 
-    /// <summary>
-    /// Освобождение ресурсов (вызывать в конце программы)
-    /// </summary>
-    public static void Dispose()
-    {
-        Cleanup();
-    }
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void Initialize();
 
-    /// <summary>
-    /// Очистка буфера экрана (заполняет пробелами)
-    /// </summary>
-    public static void Clear()
-    {
-        ClearScreen();
-    }
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void Cleanup();
 
-    /// <summary>
-    /// Отобразить буфер на экране (отрисовать всё)
-    /// </summary>
-    public static void Render()
-    {
-        Present();
-    }
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void ClearScreen();
 
-    /// <summary>
-    /// Записать текст в буфер по координатам с указанным цветом
-    /// </summary>
-    /// <param name="x">Позиция X (столбец)</param>
-    /// <param name="y">Позиция Y (строка)</param>
-    /// <param name="text">Текст для записи (русский поддерживается)</param>
-    /// <param name="foreground">Цвет текста</param>
-    /// <param name="background">Цвет фона</param>
-    public static void Write(short x, short y, string text, ConsoleColor foreground = ConsoleColor.Gray, ConsoleColor background = ConsoleColor.Black)
-    {
-        ushort attr = (ushort)(((int)background << 4) | (int)foreground);
-        WriteString(x, y, text, attr);
-    }
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern void Present();
 
-    /// <summary>
-    /// Неблокирующее чтение клавиши из консоли, возвращает ASCII код или 0 если клавиша не нажата
-    /// </summary>
-    /// <returns>Код клавиши или 0</returns>
-    public static int ReadKeyNonBlocking()
-    {
-        return ReadKey();
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        private static extern void WriteString(short x, short y, [MarshalAs(UnmanagedType.LPWStr)] string text, ushort attributes);
+
+        [DllImport(dllName, CallingConvention = CallingConvention.Cdecl)]
+        private static extern int ReadKey();
+
+        private static bool initialized = false;
+
+        /// <summary>
+        /// Инициализация альтернативного буфера консоли.
+        /// </summary>
+        public static void Init()
+        {
+            try
+            {
+                Initialize();
+                initialized = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка инициализации ConsoleBuffer: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Очистка ресурсов и возврат к стандартному буферу.
+        /// </summary>
+        public static void Dispose()
+        {
+            try
+            {
+                if (initialized)
+                {
+                    Cleanup();
+                    initialized = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при выходе из ConsoleBuffer: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Очистка содержимого буфера.
+        /// </summary>
+        public static void Clear()
+        {
+            try
+            {
+                if (initialized)
+                    ClearScreen();
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Отображает текущий буфер на экране.
+        /// </summary>
+        public static void PresentBuffer()
+        {
+            try
+            {
+                if (initialized)
+                    Present();
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Записывает строку текста в заданные координаты.
+        /// </summary>
+        public static void WriteAt(int x, int y, string text, ushort attributes = 7)
+        {
+            try
+            {
+                if (initialized && !string.IsNullOrEmpty(text))
+                    WriteString((short)x, (short)y, text, attributes);
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Ожидает и возвращает код нажатой клавиши.
+        /// </summary>
+        public static int ReadKeyCode()
+        {
+            try
+            {
+                if (initialized)
+                    return ReadKey();
+            }
+            catch { }
+
+            return -1;
+        }
     }
 }
-
-#endregion

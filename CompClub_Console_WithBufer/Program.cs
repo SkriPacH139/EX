@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompClub_Console;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -30,21 +31,21 @@ namespace CompClub_Console
             while (!exit)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Компьютерный клуб ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 3, "1. Зал для гостей");
-                ConsoleBuffer.Write(2, 4, "2. Склад");
-                ConsoleBuffer.Write(2, 5, "3. Буфет");
-                ConsoleBuffer.Write(2, 6, "4. Управление клиентами");
-                ConsoleBuffer.Write(2, 6, "5. Отчеты");
-                ConsoleBuffer.Write(2, 7, "0. Выход");
-                ConsoleBuffer.Write(2, 8, "Выберите пункт меню: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, 1, "==== Компьютерный клуб ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 3, "1. Зал для гостей");
+                ConsoleBuffer.WriteAt(2, 4, "2. Склад");
+                ConsoleBuffer.WriteAt(2, 5, "3. Буфет");
+                ConsoleBuffer.WriteAt(2, 6, "4. Управление клиентами");
+                ConsoleBuffer.WriteAt(2, 6, "5. Отчеты");
+                ConsoleBuffer.WriteAt(2, 7, "0. Выход");
+                ConsoleBuffer.WriteAt(2, 8, "Выберите пункт меню: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
                 do
                 {
-                    key = ConsoleBuffer.ReadKeyNonBlocking();
-                    ConsoleBuffer.Render();
+                    key = ConsoleBuffer.ReadKeyCode();
+                    ConsoleBuffer.PresentBuffer();
                 }
                 while (key == 0);
 
@@ -78,11 +79,11 @@ namespace CompClub_Console
         static void ShowMessage(string message)
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 2, message, ConsoleColor.Red);
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 2, message, (ushort)ConsoleColor.Red);
+            ConsoleBuffer.PresentBuffer();
 
             // Ждём любую клавишу
-            while (ConsoleBuffer.ReadKeyNonBlocking() == 0) { }
+            while (ConsoleBuffer.ReadKeyCode() == 0) { }
         }
 
 
@@ -93,25 +94,25 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Зал для гостей ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 2, $"Свободных мест: {DataStore.TotalSeats - DataStore.Guests.Count} из {DataStore.TotalSeats}");
+                ConsoleBuffer.WriteAt(2, 1, "==== Зал для гостей ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 2, $"Свободных мест: {DataStore.TotalSeats - DataStore.Guests.Count} из {DataStore.TotalSeats}");
 
                 int line = 4;
                 foreach (var guest in DataStore.Guests)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Имя: {guest.Name}, VIP: {guest.IsVIP}, Начало: {guest.StartTime}, Место: {guest.SeatNumber}, Тариф: {guest.Tariff}, Минут: {guest.RentalMinutes}");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Имя: {guest.Name}, VIP: {guest.IsVIP}, Начало: {guest.StartTime}, Место: {guest.SeatNumber}, Тариф: {guest.Tariff}, Минут: {guest.RentalMinutes}");
                 }
 
                 line++;
-                ConsoleBuffer.Write(2, (short)line++, "1. Добавить гостя");
-                ConsoleBuffer.Write(2, (short)line++, "2. Завершить сеанс гостя");
-                ConsoleBuffer.Write(2, (short)line++, "0. Назад");
-                ConsoleBuffer.Write(2, (short)line++, "Выберите действие: ");
+                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить гостя");
+                ConsoleBuffer.WriteAt(2, (short)line++, "2. Завершить сеанс гостя");
+                ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
 
-                ConsoleBuffer.Render();
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -143,14 +144,13 @@ namespace CompClub_Console
 
             Guest newGuest = new Guest();
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Добавление нового гостя ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите имя гостя: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(22, 3);
-            newGuest.Name = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 1, "==== Добавление нового гостя ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите имя гостя: ");
+            ConsoleBuffer.PresentBuffer();
+            newGuest.Name = ReadInputAt(22, 3);
 
-            ConsoleBuffer.Write(2, 4, "VIP статус (true/false): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 4, "VIP статус (true/false): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(30, 4);
             bool isVip;
             Boolean.TryParse(Console.ReadLine(), out isVip);
@@ -180,9 +180,9 @@ namespace CompClub_Console
         static void FinishGuestSession()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Завершение сеанса гостя ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите номер места гостя: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 1, "==== Завершение сеанса гостя ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер места гостя: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(33, 3);
             int seat;
             int.TryParse(Console.ReadLine(), out seat);
@@ -194,8 +194,8 @@ namespace CompClub_Console
                 return;
             }
 
-            ConsoleBuffer.Write(2, 4, "Введите количество минут аренды: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 4, "Введите количество минут аренды: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(38, 4);
             int minutes;
             int.TryParse(Console.ReadLine(), out minutes);
@@ -203,10 +203,10 @@ namespace CompClub_Console
             guest.RentalMinutes = minutes;
             double cost = guest.CalculateCost();
 
-            ConsoleBuffer.Write(2, 6, $"Сеанс завершен. Сумма к оплате: {cost}", ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 6, $"Сеанс завершен. Сумма к оплате: {cost}", (ushort)ConsoleColor.Yellow);
             DataStore.Guests.Remove(guest);
-            ConsoleBuffer.Write(2, 8, "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 8, "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
         #endregion
@@ -219,25 +219,25 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Склад ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 2, "Список комплектующих:");
+                ConsoleBuffer.WriteAt(2, 1, "==== Склад ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 2, "Список комплектующих:");
 
                 int line = 4;
                 foreach (var comp in DataStore.Components)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Название: {comp.Name}, Категория: {comp.Category}, Кол-во: {comp.Quantity}, Цена: {comp.Price}");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Название: {comp.Name}, Категория: {comp.Category}, Кол-во: {comp.Quantity}, Цена: {comp.Price}");
                 }
 
                 line++;
-                ConsoleBuffer.Write(2, (short)line++, "1. Добавить товар");
-                ConsoleBuffer.Write(2, (short)line++, "2. Списать/Передать товар");
-                ConsoleBuffer.Write(2, (short)line++, "3. Поиск по названию/категории");
-                ConsoleBuffer.Write(2, (short)line++, "0. Назад");
-                ConsoleBuffer.Write(2, (short)line++, "Выберите действие: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить товар");
+                ConsoleBuffer.WriteAt(2, (short)line++, "2. Списать/Передать товар");
+                ConsoleBuffer.WriteAt(2, (short)line++, "3. Поиск по названию/категории");
+                ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -263,28 +263,26 @@ namespace CompClub_Console
         static void AddComponent()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Добавление нового товара ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Добавление нового товара ====", (ushort)ConsoleColor.Green);
             Component comp = new Component();
 
-            ConsoleBuffer.Write(2, 3, "Введите название товара: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(30, 3);
-            comp.Name = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 3, "Введите название товара: ");
+            ConsoleBuffer.PresentBuffer();
+            comp.Name = ReadInputAt(30, 3);
 
-            ConsoleBuffer.Write(2, 4, "Введите категорию товара: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(31, 4);
-            comp.Category = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 4, "Введите категорию товара: ");
+            ConsoleBuffer.PresentBuffer();
+            comp.Category = ReadInputAt(31, 4);
 
-            ConsoleBuffer.Write(2, 5, "Введите количество: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 5, "Введите количество: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(23, 5);
             int qty;
             int.TryParse(Console.ReadLine(), out qty);
             comp.Quantity = qty;
 
-            ConsoleBuffer.Write(2, 6, "Введите цену: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 6, "Введите цену: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(18, 6);
             double price;
             double.TryParse(Console.ReadLine(), out price);
@@ -297,11 +295,10 @@ namespace CompClub_Console
         static void WriteOffComponent()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Списание/Передача товара ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите название товара: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(28, 3);
-            string name = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 1, "==== Списание/Передача товара ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите название товара: ");
+            ConsoleBuffer.PresentBuffer();
+            string name = ReadInputAt(28, 3);
 
             Component comp = DataStore.Components.Find(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
             if (comp == null)
@@ -310,8 +307,8 @@ namespace CompClub_Console
                 return;
             }
 
-            ConsoleBuffer.Write(2, 4, "Введите количество для списания: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 4, "Введите количество для списания: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(35, 4);
             int qty;
             int.TryParse(Console.ReadLine(), out qty);
@@ -330,34 +327,33 @@ namespace CompClub_Console
         static void SearchComponent()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Поиск товара ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите название или категорию: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(36, 3);
-            string searchTerm = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 1, "==== Поиск товара ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите название или категорию: ");
+            ConsoleBuffer.PresentBuffer();
+            string searchTerm = ReadInputAt(36, 3);
 
             var results = DataStore.Components.FindAll(c =>
                 c.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 ||
                 c.Category.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0);
 
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Результаты поиска ====", ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 1, "==== Результаты поиска ====", (ushort)ConsoleColor.Yellow);
             int line = 3;
 
             if (results.Count == 0)
             {
-                ConsoleBuffer.Write(2, (short)line++, "Товар не найден!");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Товар не найден!");
             }
             else
             {
                 foreach (var comp in results)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Название: {comp.Name}, Категория: {comp.Category}, Кол-во: {comp.Quantity}, Цена: {comp.Price}");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Название: {comp.Name}, Категория: {comp.Category}, Кол-во: {comp.Quantity}, Цена: {comp.Price}");
                 }
             }
 
-            ConsoleBuffer.Write(2, (short)++line, "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, (short)++line, "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
@@ -371,25 +367,25 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Буффет ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 2, "Список заказов:");
+                ConsoleBuffer.WriteAt(2, 1, "==== Буффет ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 2, "Список заказов:");
 
                 int line = 4;
                 foreach (var order in DataStore.Orders)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Номер: {order.OrderNumber}, Клиент: {order.ClientName}, Блюдо: {order.SelectedDish.Name}, Статус: {order.Status}");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Номер: {order.OrderNumber}, Клиент: {order.ClientName}, Блюдо: {order.SelectedDish.Name}, Статус: {order.Status}");
                 }
 
                 line++;
-                ConsoleBuffer.Write(2, (short)line++, "1. Добавить заказ");
-                ConsoleBuffer.Write(2, (short)line++, "2. Изменить статус заказа");
-                ConsoleBuffer.Write(2, (short)line++, "3. Управление блюдами");
-                ConsoleBuffer.Write(2, (short)line++, "0. Назад");
-                ConsoleBuffer.Write(2, (short)line++, "Выберите действие: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить заказ");
+                ConsoleBuffer.WriteAt(2, (short)line++, "2. Изменить статус заказа");
+                ConsoleBuffer.WriteAt(2, (short)line++, "3. Управление блюдами");
+                ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -405,26 +401,25 @@ namespace CompClub_Console
         static void AddOrder()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Добавление заказа ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Добавление заказа ====", (ushort)ConsoleColor.Green);
 
             Order order = new Order();
 
-            ConsoleBuffer.Write(2, 3, "Введите имя клиента: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(26, 3);
-            order.ClientName = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 3, "Введите имя клиента: ");
+            ConsoleBuffer.PresentBuffer(); order.ClientName = ReadInputAt(26, 3);
 
-            ConsoleBuffer.Write(2, 4, "Введите номер заказа: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(26, 4);
+            ConsoleBuffer.WriteAt(2, 4, "Введите номер заказа: ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(26, 4);
             int.TryParse(Console.ReadLine(), out int orderNumber);
             order.OrderNumber = orderNumber;
 
-            ConsoleBuffer.Write(2, 5, "Выберите блюдо:");
+            ConsoleBuffer.WriteAt(2, 5, "Выберите блюдо:");
             int line = 6;
             for (int i = 0; i < DataStore.Dishes.Count; i++)
             {
-                ConsoleBuffer.Write(4, (short)line++, $"{i + 1}. {DataStore.Dishes[i].Name} - {DataStore.Dishes[i].Price} руб.");
+                ConsoleBuffer.WriteAt(4, (short)line++, $"{i + 1}. {DataStore.Dishes[i].Name} - {DataStore.Dishes[i].Price} руб.");
             }
-            ConsoleBuffer.Render();
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(2, line);
             int.TryParse(Console.ReadLine(), out int dishChoice);
 
@@ -444,9 +439,9 @@ namespace CompClub_Console
         static void ChangeOrderStatus()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Изменение статуса ====", ConsoleColor.Yellow);
-            ConsoleBuffer.Write(2, 3, "Введите номер заказа: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(26, 3);
+            ConsoleBuffer.WriteAt(2, 1, "==== Изменение статуса ====", (ushort)ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер заказа: ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(26, 3);
             int.TryParse(Console.ReadLine(), out int number);
 
             Order order = DataStore.Orders.Find(o => o.OrderNumber == number);
@@ -456,12 +451,11 @@ namespace CompClub_Console
                 return;
             }
 
-            ConsoleBuffer.Write(2, 5, "1. InProcess");
-            ConsoleBuffer.Write(2, 6, "2. Ready");
-            ConsoleBuffer.Write(2, 7, "3. Delivered");
-            ConsoleBuffer.Write(2, 8, "Выберите новый статус: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(28, 8);
-            string input = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 5, "1. InProcess");
+            ConsoleBuffer.WriteAt(2, 6, "2. Ready");
+            ConsoleBuffer.WriteAt(2, 7, "3. Delivered");
+            ConsoleBuffer.WriteAt(2, 8, "Выберите новый статус: ");
+            ConsoleBuffer.PresentBuffer(); string input = ReadInputAt(28, 8);
 
             switch (input)
             {
@@ -479,27 +473,27 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Управление блюдами ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 2, "Список блюд:");
+                ConsoleBuffer.WriteAt(2, 1, "==== Управление блюдами ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 2, "Список блюд:");
 
                 int line = 4;
                 for (int i = 0; i < DataStore.Dishes.Count; i++)
                 {
                     var d = DataStore.Dishes[i];
-                    ConsoleBuffer.Write(2, (short)line++, $"{i + 1}. {d.Name}, Категория: {d.Category}, Цена: {d.Price} руб.");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"{i + 1}. {d.Name}, Категория: {d.Category}, Цена: {d.Price} руб.");
                 }
 
                 line++;
-                ConsoleBuffer.Write(2, (short)line++, "1. Добавить блюдо");
-                ConsoleBuffer.Write(2, (short)line++, "2. Редактировать блюдо");
-                ConsoleBuffer.Write(2, (short)line++, "3. Удалить блюдо");
-                ConsoleBuffer.Write(2, (short)line++, "4. Фильтрация по категории");
-                ConsoleBuffer.Write(2, (short)line++, "0. Назад");
-                ConsoleBuffer.Write(2, (short)line++, "Выберите действие: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить блюдо");
+                ConsoleBuffer.WriteAt(2, (short)line++, "2. Редактировать блюдо");
+                ConsoleBuffer.WriteAt(2, (short)line++, "3. Удалить блюдо");
+                ConsoleBuffer.WriteAt(2, (short)line++, "4. Фильтрация по категории");
+                ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -516,20 +510,18 @@ namespace CompClub_Console
         static void AddDish()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Добавление блюда ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Добавление блюда ====", (ushort)ConsoleColor.Green);
 
             Dish dish = new Dish();
 
-            ConsoleBuffer.Write(2, 3, "Название: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(12, 3);
-            dish.Name = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 3, "Название: ");
+            ConsoleBuffer.PresentBuffer(); dish.Name = ReadInputAt(12, 3);
 
-            ConsoleBuffer.Write(2, 4, "Категория: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(13, 4);
-            dish.Category = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 4, "Категория: ");
+            ConsoleBuffer.PresentBuffer(); dish.Category = ReadInputAt(13, 4);
 
-            ConsoleBuffer.Write(2, 5, "Цена: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(9, 5);
+            ConsoleBuffer.WriteAt(2, 5, "Цена: ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(9, 5);
             double.TryParse(Console.ReadLine(), out double price);
             dish.Price = price;
 
@@ -540,9 +532,9 @@ namespace CompClub_Console
         static void EditDish()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Редактирование блюда ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите номер блюда: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(26, 3);
+            ConsoleBuffer.WriteAt(2, 1, "==== Редактирование блюда ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер блюда: ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(26, 3);
             int.TryParse(Console.ReadLine(), out int index);
 
             if (index < 1 || index > DataStore.Dishes.Count)
@@ -553,18 +545,18 @@ namespace CompClub_Console
 
             var dish = DataStore.Dishes[index - 1];
 
-            ConsoleBuffer.Write(2, 5, $"Название ({dish.Name}): ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(22 + dish.Name.Length, 5);
+            ConsoleBuffer.WriteAt(2, 5, $"Название ({dish.Name}): ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(22 + dish.Name.Length, 5);
             string newName = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(newName)) dish.Name = newName;
 
-            ConsoleBuffer.Write(2, 6, $"Категория ({dish.Category}): ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(24 + dish.Category.Length, 6);
+            ConsoleBuffer.WriteAt(2, 6, $"Категория ({dish.Category}): ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(24 + dish.Category.Length, 6);
             string newCat = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(newCat)) dish.Category = newCat;
 
-            ConsoleBuffer.Write(2, 7, $"Цена ({dish.Price}): ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(19 + dish.Price.ToString().Length, 7);
+            ConsoleBuffer.WriteAt(2, 7, $"Цена ({dish.Price}): ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(19 + dish.Price.ToString().Length, 7);
             if (double.TryParse(Console.ReadLine(), out double newPrice)) dish.Price = newPrice;
 
             ShowMessage("Блюдо обновлено.");
@@ -573,9 +565,9 @@ namespace CompClub_Console
         static void DeleteDish()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Удаление блюда ====", ConsoleColor.Red);
-            ConsoleBuffer.Write(2, 3, "Введите номер блюда: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(26, 3);
+            ConsoleBuffer.WriteAt(2, 1, "==== Удаление блюда ====", (ushort)ConsoleColor.Red);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер блюда: ");
+            ConsoleBuffer.PresentBuffer(); Console.SetCursorPosition(26, 3);
             int.TryParse(Console.ReadLine(), out int index);
 
             if (index < 1 || index > DataStore.Dishes.Count)
@@ -591,28 +583,27 @@ namespace CompClub_Console
         static void FilterDishes()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Фильтрация по категории ====", ConsoleColor.Yellow);
-            ConsoleBuffer.Write(2, 3, "Введите категорию: ");
-            ConsoleBuffer.Render(); Console.SetCursorPosition(22, 3);
-            string category = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 1, "==== Фильтрация по категории ====", (ushort)ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 3, "Введите категорию: ");
+            ConsoleBuffer.PresentBuffer(); string category = ReadInputAt(22, 3);
 
             var filtered = DataStore.Dishes.FindAll(d => d.Category.IndexOf(category, StringComparison.OrdinalIgnoreCase) >= 0);
 
             int line = 5;
             if (filtered.Count == 0)
             {
-                ConsoleBuffer.Write(2, (short)line++, "Блюда не найдены.");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Блюда не найдены.");
             }
             else
             {
                 foreach (var d in filtered)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Название: {d.Name}, Категория: {d.Category}, Цена: {d.Price}");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Название: {d.Name}, Категория: {d.Category}, Цена: {d.Price}");
                 }
             }
 
-            ConsoleBuffer.Write(2, (short)(line + 1), "Нажмите любую клавишу...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, (short)(line + 1), "Нажмите любую клавишу...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
@@ -626,27 +617,27 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Управление клиентами ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 2, "Список клиентов:");
+                ConsoleBuffer.WriteAt(2, 1, "==== Управление клиентами ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 2, "Список клиентов:");
 
                 int line = 4;
                 for (int i = 0; i < DataStore.Clients.Count; i++)
                 {
                     var c = DataStore.Clients[i];
-                    ConsoleBuffer.Write(2, (short)line++, $"{i + 1}. Имя: {c.Name}, Телефон: {c.PhoneNumber}, VIP: {c.IsVIP}, Бонусы: {c.AccumulatedBonus}, Дата регистрации: {c.RegistrationDate.ToShortDateString()}, Карта: {c.HasMembershipCard}, Скидка: {c.Discount}%");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"{i + 1}. Имя: {c.Name}, Телефон: {c.PhoneNumber}, VIP: {c.IsVIP}, Бонусы: {c.AccumulatedBonus}, Дата регистрации: {c.RegistrationDate.ToShortDateString()}, Карта: {c.HasMembershipCard}, Скидка: {c.Discount}%");
                 }
 
                 line++;
-                ConsoleBuffer.Write(2, (short)line++, "1. Добавить клиента");
-                ConsoleBuffer.Write(2, (short)line++, "2. Редактировать клиента");
-                ConsoleBuffer.Write(2, (short)line++, "3. Удалить клиента");
-                ConsoleBuffer.Write(2, (short)line++, "4. Поиск клиентов");
-                ConsoleBuffer.Write(2, (short)line++, "0. Назад");
-                ConsoleBuffer.Write(2, (short)line++, "Выберите действие: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, (short)line++, "1. Добавить клиента");
+                ConsoleBuffer.WriteAt(2, (short)line++, "2. Редактировать клиента");
+                ConsoleBuffer.WriteAt(2, (short)line++, "3. Удалить клиента");
+                ConsoleBuffer.WriteAt(2, (short)line++, "4. Поиск клиентов");
+                ConsoleBuffer.WriteAt(2, (short)line++, "0. Назад");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Выберите действие: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -665,36 +656,34 @@ namespace CompClub_Console
         static void AddClient()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Добавление клиента ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Добавление клиента ====", (ushort)ConsoleColor.Green);
 
             Client client = new Client();
 
-            ConsoleBuffer.Write(2, 3, "Введите имя клиента: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(24, 3);
-            client.Name = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 3, "Введите имя клиента: ");
+            ConsoleBuffer.PresentBuffer();
+            client.Name = ReadInputAt(24, 3);
 
-            ConsoleBuffer.Write(2, 4, "Введите номер телефона: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(27, 4);
-            client.PhoneNumber = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 4, "Введите номер телефона: ");
+            ConsoleBuffer.PresentBuffer();
+            client.PhoneNumber = ReadInputAt(27, 4);
 
-            ConsoleBuffer.Write(2, 5, "VIP статус (true/false): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 5, "VIP статус (true/false): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(26, 5);
             bool.TryParse(Console.ReadLine(), out bool isVip);
             client.IsVIP = isVip;
 
             client.RegistrationDate = DateTime.Now;
 
-            ConsoleBuffer.Write(2, 6, "Наличие членской карты (true/false): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 6, "Наличие членской карты (true/false): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(38, 6);
             bool.TryParse(Console.ReadLine(), out bool hasCard);
             client.HasMembershipCard = hasCard;
 
-            ConsoleBuffer.Write(2, 7, "Введите размер скидки (%): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 7, "Введите размер скидки (%): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(26, 7);
             double.TryParse(Console.ReadLine(), out double discount);
             client.Discount = discount;
@@ -708,9 +697,9 @@ namespace CompClub_Console
         static void EditClient()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Редактирование клиента ====", ConsoleColor.Yellow);
-            ConsoleBuffer.Write(2, 3, "Введите номер клиента для редактирования: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 1, "==== Редактирование клиента ====", (ushort)ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер клиента для редактирования: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(41, 3);
 
             if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > DataStore.Clients.Count)
@@ -721,34 +710,34 @@ namespace CompClub_Console
 
             Client client = DataStore.Clients[index - 1];
 
-            ConsoleBuffer.Write(2, 5, $"Новое имя (текущее: {client.Name}): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 5, $"Новое имя (текущее: {client.Name}): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(25 + client.Name.Length, 5);
             string newName = Console.ReadLine();
             if (!string.IsNullOrEmpty(newName))
                 client.Name = newName;
 
-            ConsoleBuffer.Write(2, 6, $"Новый телефон (текущее: {client.PhoneNumber}): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 6, $"Новый телефон (текущее: {client.PhoneNumber}): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(33 + client.PhoneNumber.Length, 6);
             string newPhone = Console.ReadLine();
             if (!string.IsNullOrEmpty(newPhone))
                 client.PhoneNumber = newPhone;
 
-            ConsoleBuffer.Write(2, 7, $"VIP статус (текущее: {client.IsVIP}) (true/false): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 7, $"VIP статус (текущее: {client.IsVIP}) (true/false): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(40, 7);
             if (bool.TryParse(Console.ReadLine(), out bool isVip))
                 client.IsVIP = isVip;
 
-            ConsoleBuffer.Write(2, 8, $"Наличие членской карты (текущее: {client.HasMembershipCard}) (true/false): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 8, $"Наличие членской карты (текущее: {client.HasMembershipCard}) (true/false): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(50, 8);
             if (bool.TryParse(Console.ReadLine(), out bool hasCard))
                 client.HasMembershipCard = hasCard;
 
-            ConsoleBuffer.Write(2, 9, $"Размер скидки (текущее: {client.Discount}%): ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 9, $"Размер скидки (текущее: {client.Discount}%): ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(34 + client.Discount.ToString().Length, 9);
             if (double.TryParse(Console.ReadLine(), out double discount))
                 client.Discount = discount;
@@ -759,9 +748,9 @@ namespace CompClub_Console
         static void DeleteClient()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Удаление клиента ====", ConsoleColor.Red);
-            ConsoleBuffer.Write(2, 3, "Введите номер клиента для удаления: ");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 1, "==== Удаление клиента ====", (ushort)ConsoleColor.Red);
+            ConsoleBuffer.WriteAt(2, 3, "Введите номер клиента для удаления: ");
+            ConsoleBuffer.PresentBuffer();
             Console.SetCursorPosition(38, 3);
 
             if (!int.TryParse(Console.ReadLine(), out int index) || index < 1 || index > DataStore.Clients.Count)
@@ -777,35 +766,33 @@ namespace CompClub_Console
         static void SearchClient()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Поиск клиентов ====", ConsoleColor.Green);
-            ConsoleBuffer.Write(2, 3, "Введите имя или номер телефона: ");
-            ConsoleBuffer.Render();
-            Console.SetCursorPosition(34, 3);
-
-            string searchTerm = Console.ReadLine();
+            ConsoleBuffer.WriteAt(2, 1, "==== Поиск клиентов ====", (ushort)ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 3, "Введите имя или номер телефона: ");
+            ConsoleBuffer.PresentBuffer();
+            string searchTerm = ReadInputAt(34, 3);
 
             var results = DataStore.Clients.FindAll(c =>
                 c.Name.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0 ||
                 c.PhoneNumber.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0);
 
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Результаты поиска ====", ConsoleColor.Yellow);
+            ConsoleBuffer.WriteAt(2, 1, "==== Результаты поиска ====", (ushort)ConsoleColor.Yellow);
 
             int line = 3;
             if (results.Count == 0)
             {
-                ConsoleBuffer.Write(2, (short)line++, "Клиенты не найдены.");
+                ConsoleBuffer.WriteAt(2, (short)line++, "Клиенты не найдены.");
             }
             else
             {
                 foreach (var client in results)
                 {
-                    ConsoleBuffer.Write(2, (short)line++, $"Имя: {client.Name}, Телефон: {client.PhoneNumber}, VIP: {client.IsVIP}, Бонусы: {client.AccumulatedBonus}, Дата регистрации: {client.RegistrationDate.ToShortDateString()}, Карта: {client.HasMembershipCard}, Скидка: {client.Discount}%");
+                    ConsoleBuffer.WriteAt(2, (short)line++, $"Имя: {client.Name}, Телефон: {client.PhoneNumber}, VIP: {client.IsVIP}, Бонусы: {client.AccumulatedBonus}, Дата регистрации: {client.RegistrationDate.ToShortDateString()}, Карта: {client.HasMembershipCard}, Скидка: {client.Discount}%");
                 }
             }
 
-            ConsoleBuffer.Write(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
@@ -819,17 +806,17 @@ namespace CompClub_Console
             while (!back)
             {
                 ConsoleBuffer.Clear();
-                ConsoleBuffer.Write(2, 1, "==== Отчеты ====", ConsoleColor.Cyan);
-                ConsoleBuffer.Write(2, 3, "1. Ежедневная выручка");
-                ConsoleBuffer.Write(2, 4, "2. Самые популярные товары на складе (топ-5)");
-                ConsoleBuffer.Write(2, 5, "3. Часто заказываемые блюда");
-                ConsoleBuffer.Write(2, 6, "4. Статистика посещений гостей");
-                ConsoleBuffer.Write(2, 7, "0. Назад");
-                ConsoleBuffer.Write(2, 9, "Выберите действие: ");
-                ConsoleBuffer.Render();
+                ConsoleBuffer.WriteAt(2, 1, "==== Отчеты ====", (ushort)ConsoleColor.Cyan);
+                ConsoleBuffer.WriteAt(2, 3, "1. Ежедневная выручка");
+                ConsoleBuffer.WriteAt(2, 4, "2. Самые популярные товары на складе (топ-5)");
+                ConsoleBuffer.WriteAt(2, 5, "3. Часто заказываемые блюда");
+                ConsoleBuffer.WriteAt(2, 6, "4. Статистика посещений гостей");
+                ConsoleBuffer.WriteAt(2, 7, "0. Назад");
+                ConsoleBuffer.WriteAt(2, 9, "Выберите действие: ");
+                ConsoleBuffer.PresentBuffer();
 
                 int key;
-                do { key = ConsoleBuffer.ReadKeyNonBlocking(); } while (key == 0);
+                do { key = ConsoleBuffer.ReadKeyCode(); } while (key == 0);
 
                 switch (key)
                 {
@@ -858,7 +845,7 @@ namespace CompClub_Console
         static void ReportRevenue()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Ежедневная выручка ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Ежедневная выручка ====", (ushort)ConsoleColor.Green);
 
             double hallRevenue = 100; // примерные значения
             double kitchenRevenue = 0;
@@ -869,19 +856,19 @@ namespace CompClub_Console
             }
             double vipRevenue = 50;
 
-            ConsoleBuffer.Write(2, 3, $"Зал: {hallRevenue} руб.");
-            ConsoleBuffer.Write(2, 4, $"Кухня: {kitchenRevenue} руб.");
-            ConsoleBuffer.Write(2, 5, $"VIP: {vipRevenue} руб.");
+            ConsoleBuffer.WriteAt(2, 3, $"Зал: {hallRevenue} руб.");
+            ConsoleBuffer.WriteAt(2, 4, $"Кухня: {kitchenRevenue} руб.");
+            ConsoleBuffer.WriteAt(2, 5, $"VIP: {vipRevenue} руб.");
 
-            ConsoleBuffer.Write(2, 7, "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 7, "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
         static void ReportPopularComponents()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Самые популярные товары на складе (топ-5) ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Самые популярные товары на складе (топ-5) ====", (ushort)ConsoleColor.Green);
 
             var topComponents = new List<Component>(DataStore.Components);
             topComponents.Sort((a, b) => b.Quantity.CompareTo(a.Quantity));
@@ -890,18 +877,18 @@ namespace CompClub_Console
             int line = 3;
             for (int i = 0; i < count; i++)
             {
-                ConsoleBuffer.Write(2, (short)line++, $"{i + 1}. {topComponents[i].Name} - Количество: {topComponents[i].Quantity}");
+                ConsoleBuffer.WriteAt(2, (short)line++, $"{i + 1}. {topComponents[i].Name} - Количество: {topComponents[i].Quantity}");
             }
 
-            ConsoleBuffer.Write(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
         static void ReportPopularDishes()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Часто заказываемые блюда ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Часто заказываемые блюда ====", (ushort)ConsoleColor.Green);
 
             Dictionary<string, int> dishCount = new Dictionary<string, int>();
             foreach (var order in DataStore.Orders)
@@ -915,23 +902,23 @@ namespace CompClub_Console
             int line = 3;
             foreach (var kvp in dishCount)
             {
-                ConsoleBuffer.Write(2, (short)line++, $"Блюдо: {kvp.Key}, Заказов: {kvp.Value}");
+                ConsoleBuffer.WriteAt(2, (short)line++, $"Блюдо: {kvp.Key}, Заказов: {kvp.Value}");
             }
 
-            ConsoleBuffer.Write(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, (short)(line + 1), "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
         static void ReportGuestStatistics()
         {
             ConsoleBuffer.Clear();
-            ConsoleBuffer.Write(2, 1, "==== Статистика посещений гостей ====", ConsoleColor.Green);
+            ConsoleBuffer.WriteAt(2, 1, "==== Статистика посещений гостей ====", (ushort)ConsoleColor.Green);
 
-            ConsoleBuffer.Write(2, 3, $"Количество текущих гостей: {DataStore.Guests.Count}");
+            ConsoleBuffer.WriteAt(2, 3, $"Количество текущих гостей: {DataStore.Guests.Count}");
 
-            ConsoleBuffer.Write(2, 5, "Нажмите любую клавишу для возврата...");
-            ConsoleBuffer.Render();
+            ConsoleBuffer.WriteAt(2, 5, "Нажмите любую клавишу для возврата...");
+            ConsoleBuffer.PresentBuffer();
             WaitAnyKey();
         }
 
@@ -939,8 +926,20 @@ namespace CompClub_Console
 
         static void WaitAnyKey()
         {
-            while (ConsoleBuffer.ReadKeyNonBlocking() == 0) { }
+            while (ConsoleBuffer.ReadKeyCode() == 0) { }
+        }
+
+        static string ReadInputAt(int x, int y)
+        {
+            ConsoleBuffer.Dispose();
+            Console.SetCursorPosition(x, y);
+            string input = Console.ReadLine();
+            ConsoleBuffer.Init();
+            return input;
         }
     }
 }
 #endregion
+
+    
+
